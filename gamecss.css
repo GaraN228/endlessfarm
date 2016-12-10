@@ -1,0 +1,53 @@
+#contentbox{
+	margin-left: auto;
+	margin-right: auto;
+	display: table;
+}
+#mainBlock{
+	display: inline-block;
+	float: left;
+
+}
+#map{
+	border-collapse: collapse;
+
+}
+#map td{
+	border:1px solid #FF4500;
+	width: 64px;
+	height: 64px;
+	text-align: center;
+	border-collapse: collapse;
+	padding: 0;
+	background-color: #FFE4E1;
+
+}
+#resAndAction{
+	display: inline-block;
+	border:1px solid #9370DB;
+	background-color: #D8BFD8;
+	width: 200px;
+	height: 324px;
+}
+#activeForms{
+	display: inline-block;
+	border:1px solid #4169E1;
+	background-color:#ADD8E6;
+	width: 324px;
+	height: 150px;
+	text-align: center;
+}
+#actionLog{
+	display: inline-block;
+	border:1px solid #9ACD32;
+	background-color:#98FB98;
+	width: 200px;
+	height: 150px;
+	text-align: center;
+}
+p{
+	margin-left: 10px;
+}
+img{
+		 vertical-align: middle;
+}

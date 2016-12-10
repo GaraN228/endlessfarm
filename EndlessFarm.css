@@ -1,0 +1,328 @@
+body{
+	background-image: url("img/bg.jpg");
+	background-size: cover;
+	background-attachment:fixed;
+}
+#content{
+	width: 650px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color:#1E2C4F;/*#79A0C1;*/
+	padding-top: 15px;
+	padding-bottom: 15px;
+	border-radius: 35px;
+	box-shadow:0 0 15px;
+}
+a,a:active,a:link,a:visited{
+	color: #00FF7F;
+	font-weight: bold;
+}
+header,article,footer,nav{
+	width: 620px;
+	
+	display:block;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-left: auto;
+	margin-right: auto;
+}
+h1,h2{
+	margin: 0px;
+	text-align: center;
+}
+header{
+	text-align: center;
+	background-color:white;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
+	color: #1E2C4F;
+}
+nav{
+	background-color:#1E2C4F;
+}
+article{
+	background-color:white;
+	height: 400px;
+	overflow: auto;
+	font-size: 1.3em;	
+}
+footer{
+	background-color:#1E2C4F;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	color: white;
+	border-bottom-left-radius:20px;
+	border-bottom-right-radius:20px;
+}
+#menu > li{
+	display: inline-block;
+	border: solid white;
+	font-size: 1.4em;
+	width:140px;
+	color: white;
+	border-radius: 8px;
+}
+#menu {
+	padding:5px;
+	text-align: center;
+	margin: 0px;
+}
+#menu > li:hover{
+	cursor: pointer;
+	/*background-color: rgba(255,255,255,.15);*/
+	background-color:white;
+	font-weight: bold;
+	color: #1E2C4F !important;
+}
+#main,#login,#regist,#forum,#regSuccess,#cabinet{
+	padding: 10px;
+
+}
+input[type="text"],input[type="password"]{
+	border: solid #1E2C4F;
+	font-size: 1.1em;
+	color: #1E2C4F;
+	border-radius: 8px;
+	box-shadow:5px 5px 10px rgba(0,0,0,.5);
+	background-color: rgba(30, 44, 79, .1);
+	font-family:serif;
+
+}
+input[type="text"]:focus,input[type="password"]:focus{
+	outline: none;
+	background-color: white;
+	color: #1E2C4F;
+	font-family:serif;
+
+}
+#login input[type="submit"],#regist input[type="submit"],#newMesForm input[type="submit"],#newMesForm input[type="button"]{
+	outline: none;
+	border: solid #1E2C4F;
+	background-color: #1E2C4F;
+	font-size: 1.1em;
+	width:130px;
+	color: white;
+	box-shadow:5px 5px 10px rgba(0,0,0,.5);
+	border-radius: 8px;
+	font-family:serif;
+}
+#login input[type="submit"]:hover,#regist input[type="submit"]:hover,#newMesForm input[type="submit"]:hover{
+	cursor: pointer;
+	border: solid rgba(30, 44, 79, .9);
+	background-color: rgba(30, 44, 79, .9);
+	font-family:serif;
+}
+#log {
+	padding-top: 15px;
+
+}
+#reg{
+	width: 350px;
+	height: 310px;
+	float: left; 
+}
+#regDiscription{
+	color: #999999;
+	font-size: 0.9em;
+	height: 310px;
+}
+#loginWarningMessage,#regWarningMessage{
+	outline: none;
+	border: solid red;
+	background-color: red;
+	color: white;
+	box-shadow:5px 5px 10px rgba(0,0,0,.5);
+	border-radius: 8px;
+	font-family:serif;
+	padding-left: 5px;
+
+}
+#regSuccess{
+	background-color: #009811;
+	color: white;
+	box-shadow:5px 5px 10px rgba(0,0,0,.5);
+	border-radius: 8px;
+	font-family:serif;
+	vertical-align: middle;
+	margin: auto;
+	margin-top: 100px;
+	width: 470px;
+}
+#loginWarningMessage:hover,#regWarningMessage:hover,#regSuccess:hover{
+	cursor: pointer;
+}
+#currentUser{
+	background-color: #1E2C4F;
+	color: white;
+	text-align: right;
+	padding-right: 10px;
+
+}
+#reg > div{
+	margin-left: 20px;
+	display: inline-block;
+	border: solid #1E2C4F;
+	background-color: #1E2C4F;
+	font-size: 1.1em;
+	color: white;
+	border-radius: 8px;
+	padding: 0 8px;
+	box-shadow:5px 5px 10px rgba(0,0,0,.5);
+}
+#reg > div:hover{
+	cursor: pointer;
+	background-color: rgba(30, 44, 79, .9);
+}
+#notesTable{
+	border:2px solid #1E2C4F;
+	border-collapse: collapse;
+	box-sizing: border-box;
+	margin-right: auto;
+	margin-top: 7px;
+	
+}
+th,td{
+	text-align: left;
+	padding: 3px;
+	border:2px solid #1E2C4F;
+}
+#notesTableBody{
+	border:2px solid #1E2C4F;
+	border-collapse: collapse;
+	margin-right: 10px;
+
+}
+#notesTableHeader{
+	margin-top: 7px;
+	border:2px solid #1E2C4F;
+	border-collapse: collapse;
+}
+#forumContent{
+	height: 290px;
+	overflow: auto;	
+	box-shadow:5px 5px 10px rgba(0,0,0,.5);
+}
+.noteTitle{
+	white-space: nowrap;			
+	overflow: hidden;
+	text-overflow: ellipsis;
+	box-sizing: border-box;
+	width: 316px;
+}
+.noteTitle:hover{
+	cursor: pointer;
+	box-shadow:0 0 10px rgba(0,0,0,.5);
+}
+.noteDate{
+	box-sizing: border-box;
+	width: 100px;
+}
+.noteAuthor{
+	box-sizing: border-box;
+	width: 140px;
+}
+th{
+	background-color: #1E2C4F;
+	color: white;
+	position: relative;
+
+}
+tr:nth-of-type(odd){
+background-color: rgba(30, 44, 79, .2);
+}
+tr:nth-of-type(even){
+background-color: rgba(30, 44, 79, .05);
+}
+.bigButton{
+	outline: none;
+	background-color: #1E2C4F;
+	font-size: 1.1em;
+	color: white;
+	box-shadow:5px 5px 10px rgba(0,0,0,.5);
+	border-radius: 8px;
+	font-family:serif;
+	/*width: 250px; */
+	text-align: center;
+	padding: 2px 10px 2px 10px;
+}
+.bigButton:hover{
+	cursor: pointer;
+	background-color: rgba(30, 44, 79, .9);
+}
+#mesTitle {
+	width: 590px;
+}
+#newMesTA{
+	width: 586px;
+	max-width: 586px;
+	height: 170px;
+	max-height: 170px;
+	border: solid #1E2C4F;
+	font-size: .8em;
+	border-radius: 8px;
+	box-shadow:5px 5px 10px rgba(0,0,0,.5);
+	background-color: #E9EAEC;
+	font-family:serif;
+}
+#newMesTA:focus{
+	outline: none;
+	background-color: white;
+	color: #1E2C4F;
+	font-family:serif;
+}
+#newMessageButton{
+	position: absolute;
+	bottom: -20px;
+	width: 500px;
+	right: 40px;
+}
+.noteBody{	
+	height: 270px;
+	overflow: auto;
+	border: solid #1E2C4F;
+	box-shadow:5px 5px 10px rgba(0,0,0,.5);
+}
+.noteHead,.commentHead{
+	overflow: auto;
+	background-color:#1E2C4F;
+	color: white;
+	box-shadow:5px 5px 10px rgba(0,0,0,.5);
+	padding-left: 5px;
+}
+.commentHead{
+	background-color: rgba(30, 44, 79, .8);
+	box-shadow:none;
+}
+#commentsInfo{
+	background-color: #E9EAEC;
+	padding: 5px;
+}
+#newCommentForm{	
+	background-color: #E9EAEC;
+	padding-left: 5px;
+	padding-bottom: 5px;
+}
+#newCommentTxtArea{
+
+	width: 547px;
+	max-width: 547px;
+	height: 100px;
+	max-height: 100px;
+}
+#newCommentButton{
+	margin-top: 10px;
+}
+.subCommentButton{	
+	border:1px solid #C0C0C0 ;
+}
+#deletNoteSpan:hover{
+	cursor: pointer;
+	font-style: bold;
+}
+#deleteNoteForm{
+	background-color: #E9EAEC;
+	padding-left: 5px;
+	padding-bottom: 5px;
+}
