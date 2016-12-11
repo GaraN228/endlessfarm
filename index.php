@@ -20,6 +20,7 @@ function lookForOverlap($mail,$login,$link)
 	}
 	return 'no_overlap';
 }
+
  ?>
 <!DOCTYPE html>
 <html>
@@ -42,63 +43,63 @@ controlEnterAndExit();">
 </header>	
 <nav>
 <ul id="menu">
-	<li onclick="showMainPage();hideLoginWarningMessage();hideRegWarningMessage();">Главная</li>
-	<li onclick="showForum();">Форум</li>
-	<li id="regButton" onclick="pressRegCabBut(sessionStorage['isLogin']);hideLoginWarningMessage();hideRegWarningMessage();">Регистрация</li>
-	<li id="enterButton" onclick="pressEnterExitBut(sessionStorage['isLogin']);hideLoginWarningMessage();hideRegWarningMessage();">Вход</li>
+	<li onclick="showMainPage();hideLoginWarningMessage();hideRegWarningMessage();">Р“Р»Р°РІРЅР°СЏ</li>
+	<li onclick="showForum();">Р¤РѕСЂСѓРј</li>
+	<li id="regButton" onclick="pressRegCabBut(sessionStorage['isLogin']);hideLoginWarningMessage();hideRegWarningMessage();">Р РµРіРёСЃС‚СЂР°С†РёСЏ</li>
+	<li id="enterButton" onclick="pressEnterExitBut(sessionStorage['isLogin']);hideLoginWarningMessage();hideRegWarningMessage();">Р’С…РѕРґ</li>
 </ul>
 <div id="currentUser" style="display: none;">
-	Привет, usernamе!
+	РџСЂРёРІРµС‚, usernamРµ!
 </div>	
 </nav>
 <article id="contentbox">
 
 <div id="main" style="display: none;">
-	<h2>Последние новости</h2>
-	<p>Идет работа над проектом!</p>
-	<p>Что уже созданно:</p>
+	<h2>РџРѕСЃР»РµРґРЅРёРµ РЅРѕРІРѕСЃС‚Рё</h2>
+	<p>РРґРµС‚ СЂР°Р±РѕС‚Р° РЅР°Рґ РїСЂРѕРµРєС‚РѕРј!</p>
+	<p>Р§С‚Рѕ СѓР¶Рµ СЃРѕР·РґР°РЅРЅРѕ:</p>
 	<ol reversed="">
-	<li>Много чего добавлено, впадлу дописывать.</li>
-	<li>Добавлен функционал кнопки Вход.</li>
-	<li>Настроен стиль кнопок с помощью <b>hover</b>.</li>
-	<li>Создан txt файл для резервного хранения текста на кириллице.</li>
-	<li>Создан Javascript для загрузки главной страницы.</li>
-	<li>Добвлена тень от фона.</li>
-	<li>Добавлен скроллбар в блок <b>article</b>.</li>
-	<li>Добавлен функционал кнопки Вход.</li>
-	<li>Настроен стиль кнопок с помощью <b>hover</b>.</li>
-	<li>Создан txt файл для резервного хранения текста на кириллице.</li>
-	<li>Создан Javascript для загрузки главной страницы.</li>
-	<li>Добвлена тень от фона.</li>
-	<li>Добавлен скроллбар в блок <b>article</b>.</li>
+	<li>РњРЅРѕРіРѕ С‡РµРіРѕ РґРѕР±Р°РІР»РµРЅРѕ, РІРїР°РґР»Сѓ РґРѕРїРёСЃС‹РІР°С‚СЊ.</li>
+	<li>Р”РѕР±Р°РІР»РµРЅ С„СѓРЅРєС†РёРѕРЅР°Р» РєРЅРѕРїРєРё Р’С…РѕРґ.</li>
+	<li>РќР°СЃС‚СЂРѕРµРЅ СЃС‚РёР»СЊ РєРЅРѕРїРѕРє СЃ РїРѕРјРѕС‰СЊСЋ <b>hover</b>.</li>
+	<li>РЎРѕР·РґР°РЅ txt С„Р°Р№Р» РґР»СЏ СЂРµР·РµСЂРІРЅРѕРіРѕ С…СЂР°РЅРµРЅРёСЏ С‚РµРєСЃС‚Р° РЅР° РєРёСЂРёР»Р»РёС†Рµ.</li>
+	<li>РЎРѕР·РґР°РЅ Javascript РґР»СЏ Р·Р°РіСЂСѓР·РєРё РіР»Р°РІРЅРѕР№ СЃС‚СЂР°РЅРёС†С‹.</li>
+	<li>Р”РѕР±РІР»РµРЅР° С‚РµРЅСЊ РѕС‚ С„РѕРЅР°.</li>
+	<li>Р”РѕР±Р°РІР»РµРЅ СЃРєСЂРѕР»Р»Р±Р°СЂ РІ Р±Р»РѕРє <b>article</b>.</li>
+	<li>Р”РѕР±Р°РІР»РµРЅ С„СѓРЅРєС†РёРѕРЅР°Р» РєРЅРѕРїРєРё Р’С…РѕРґ.</li>
+	<li>РќР°СЃС‚СЂРѕРµРЅ СЃС‚РёР»СЊ РєРЅРѕРїРѕРє СЃ РїРѕРјРѕС‰СЊСЋ <b>hover</b>.</li>
+	<li>РЎРѕР·РґР°РЅ txt С„Р°Р№Р» РґР»СЏ СЂРµР·РµСЂРІРЅРѕРіРѕ С…СЂР°РЅРµРЅРёСЏ С‚РµРєСЃС‚Р° РЅР° РєРёСЂРёР»Р»РёС†Рµ.</li>
+	<li>РЎРѕР·РґР°РЅ Javascript РґР»СЏ Р·Р°РіСЂСѓР·РєРё РіР»Р°РІРЅРѕР№ СЃС‚СЂР°РЅРёС†С‹.</li>
+	<li>Р”РѕР±РІР»РµРЅР° С‚РµРЅСЊ РѕС‚ С„РѕРЅР°.</li>
+	<li>Р”РѕР±Р°РІР»РµРЅ СЃРєСЂРѕР»Р»Р±Р°СЂ РІ Р±Р»РѕРє <b>article</b>.</li>
 	</ol>	
 </div>
 <div id="login" style="display: none;">
-	<h2>Авторизация</h2>
+	<h2>РђРІС‚РѕСЂРёР·Р°С†РёСЏ</h2>
 	<form id="log" method="POST" action="index.php" name="enter">
-		<p>Введите логин:<br>
+		<p>Р’РІРµРґРёС‚Рµ Р»РѕРіРёРЅ:<br>
 		<input id="enterName" type="text" name="login" onfocus="hideLoginWarningMessage();" value="GaraN" maxlength="15"></p>
-		<p>Введите пароль:<br>
+		<p>Р’РІРµРґРёС‚Рµ РїР°СЂРѕР»СЊ:<br>
 		<input id="enterPass" type="password" name="pass" onfocus="hideLoginWarningMessage();"></p>
 		<input type="hidden" name="formType" value="loginForm">
-		<p><input type="submit" name="submit" value="Войти" onclick="return validationEnter()"></p>
+		<p><input type="submit" name="submit" value="Р’РѕР№С‚Рё" onclick="return validationEnter()"></p>
 		<p id="loginWarningMessage" onclick="hideLoginWarningMessage();" style="display: none;"></p>
 	</form>
 </div>
 <div id="regist" style="display: none;">
-	<h2>Регистрация</h2>
+	<h2>Р РµРіРёСЃС‚СЂР°С†РёСЏ</h2>
 	<form id="reg" method="POST" action="index.php" name="reg">
-	Введите логин:<br>
+	Р’РІРµРґРёС‚Рµ Р»РѕРіРёРЅ:<br>
 	<input id="regLogin" type="text" name="regLogin" maxlength="15" onfocus="hideRegWarningMessage();"><div onclick="showFormTip('regLogin')">?</div><br>
-	Введите e-mail:<br>
+	Р’РІРµРґРёС‚Рµ e-mail:<br>
 	<input id="regEmail" type="text" name="regEmail" onfocus="hideRegWarningMessage();"><div onclick="showFormTip('regEmail')">?</div><br>
-	Введите пароль:<br>
+	Р’РІРµРґРёС‚Рµ РїР°СЂРѕР»СЊ:<br>
 	<input id="regPass1" type="password" name="regPass1" maxlength="15" onfocus="hideRegWarningMessage();"><div  onclick="showFormTip('regPass1')">?</div><br>
-	Подтвердите пароль:<br>
+	РџРѕРґС‚РІРµСЂРґРёС‚Рµ РїР°СЂРѕР»СЊ:<br>
 	<input id="regPass2" type="password" name="regPass2" onfocus="hideRegWarningMessage();"><br>
 	<input type="hidden" name="regTime" value="<?php echo date('Y-m-d H:i:s');?>">
 	<input type="hidden" name="formType" value="regForm">
-	<p><input type="submit" name="submit" value="Создать" onclick="return validationReg()"></p>	
+	<p><input type="submit" name="submit" value="РЎРѕР·РґР°С‚СЊ" onclick="return validationReg()"></p>	
 	</form>
 	<div id="regDiscription" style="display: block;">
 	</div>
@@ -115,9 +116,9 @@ controlEnterAndExit();">
 	 		<div id="forumList" style="position: relative;">
 	 		<table id="notesTableHeader">
 			<tr>
-			<th style="width: 320px;">Тема</th>
-			<th style="width: 140px;">Автор</th>
-			<th style="width: 120px;">Дата</th>
+			<th style="width: 320px;">РўРµРјР°</th>
+			<th style="width: 140px;">РђРІС‚РѕСЂ</th>
+			<th style="width: 120px;">Р”Р°С‚Р°</th>
 			</tr>
 			</table>
 			<div id="forumContent">
@@ -136,24 +137,26 @@ controlEnterAndExit();">
 		 	<?
 		 } else {
 		 	?>
-		 	<div id="forumList" style="height: 350px;position: relative;text-align: center;">Нет записей
+		 	<div id="forumList" style="height: 350px;position: relative;text-align: center;">РќРµС‚ Р·Р°РїРёСЃРµР№
 		 	<?
 		 }
+
+
 	?>
 	<br>
-	<div id="newMessageButton" class="bigButton" onclick="forumList.style.display = 'none';newMesForm.style.display = 'block';width='250px;'">Добавить новую запись</div>
+	<div id="newMessageButton" class="bigButton" onclick="forumList.style.display = 'none';newMesForm.style.display = 'block';width='250px;'">Р”РѕР±Р°РІРёС‚СЊ РЅРѕРІСѓСЋ Р·Р°РїРёСЃСЊ</div>
 	</div>
 	<div id="newMesForm" style="display: none;">
-		<h2>Новая запись</h2>
+		<h2>РќРѕРІР°СЏ Р·Р°РїРёСЃСЊ</h2>
 		<form id="newMes" method="POST" action="index.php" name="newMes">
-			Тема сообщения:<br>
+			РўРµРјР° СЃРѕРѕР±С‰РµРЅРёСЏ:<br>
 			<input id="mesTitle" type="text" name="mesTitle"><br>
-			Текст сообщения:<br>
+			РўРµРєСЃС‚ СЃРѕРѕР±С‰РµРЅРёСЏ:<br>
 			<textarea id="newMesTA" name="mesText"></textarea>
 			<input type="hidden" name="mesPostTime" value="<?php echo date('Y-m-d H:i:s');?>">
 			<input type="hidden" name="formType" value="newMessage">
-			<p><input type="submit" name="submit" value="Создать" onclick="">
-			<input type="button" name="cancel" value="Отмена" onclick="newMesForm.style.display = 'none';forumList.style.display = 'block';"></p>		
+			<p><input type="submit" name="submit" value="РЎРѕР·РґР°С‚СЊ" onclick="">
+			<input type="button" name="cancel" value="РћС‚РјРµРЅР°" onclick="newMesForm.style.display = 'none';forumList.style.display = 'block';"></p>		
 		</form>
 	</div>
 	<div id="forumMesDiv" style="display: none;">
@@ -165,7 +168,7 @@ controlEnterAndExit();">
 				$result = mysqli_query($link,$query);
 				$note = mysqli_fetch_array($result);
 				if(($note['user_name']==$_SESSION['endlessFarmLogin'])||($_SESSION['sessionAccess']=='a')){
-					$deletNote = '[удалить]';
+					$deletNote = '[СѓРґР°Р»РёС‚СЊ]';
 				}
 				echo "<div class='noteHead'>".$note['note_title']."<br>";				
 				echo "<span style ='font-size:.75em;'>".$note['user_name']."</span><span style ='font-size:.7em;margin-left:10px;'>".$note['note_created'];
@@ -173,29 +176,29 @@ controlEnterAndExit();">
 				echo "<div class='noteBody'>";
 				?>
 				<form id="deleteNoteForm" method="POST" action="index.php" style="display: none;">
-					Удалить заметку?
-					<input class="subCommentButton" type="submit" name="submit" value="Удалить" onclick="">
+					РЈРґР°Р»РёС‚СЊ Р·Р°РјРµС‚РєСѓ?
+					<input class="subCommentButton" type="submit" name="submit" value="РЈРґР°Р»РёС‚СЊ" onclick="">
 					<input type="hidden" name="delet_id" value="<?echo $currentForumNote;?>">
 					<input type="hidden" name="formType" value="deletNote">
-					<input class="subCommentButton" type="button" name="cancel" value="Отмена" onclick="deleteNoteForm.style.display = 'none'">
+					<input class="subCommentButton" type="button" name="cancel" value="РћС‚РјРµРЅР°" onclick="deleteNoteForm.style.display = 'none'">
 				</form>	
 				<?				
 				echo "<div style='padding-left:5px;white-space: pre-wrap;'>".$note['note_body']."</div>";
-				//Грузим комменты
+				//Р“СЂСѓР·РёРј РєРѕРјРјРµРЅС‚С‹
 				$query = "SELECT * FROM `note_comments` WHERE note_id = '$currentForumNote'";
 				$result = mysqli_query($link,$query);
 				$comNumber = mysqli_num_rows($result);
 				if($comNumber){
-					echo "<div id='commentsInfo'>Комментарии (".$comNumber.")</div>";					
+					echo "<div id='commentsInfo'>РљРѕРјРјРµРЅС‚Р°СЂРёРё (".$comNumber.")</div>";					
 				} else {
-					echo "<div id='commentsInfo'>Нет Комментариев</div>";
+					echo "<div id='commentsInfo'>РќРµС‚ РљРѕРјРјРµРЅС‚Р°СЂРёРµРІ</div>";
 				}
 				?>	
 				<form id="newCommentForm" method="POST" action="index.php?forum_note_id=<? echo $currentForumNote; ?>" style="display: none;">
-					<textarea id="newCommentTxtArea" name="comText" placeholder="Введите текст комментария..."></textarea><br>
+					<textarea id="newCommentTxtArea" name="comText" placeholder="Р’РІРµРґРёС‚Рµ С‚РµРєСЃС‚ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ..."></textarea><br>
 					<input type="hidden" name="commentPostTime" value="<?php echo date('Y-m-d H:i:s');?>">
 					<input type="hidden" name="formType" value="newComment">
-					<input class="subCommentButton" type="submit" name="submit" value="Комментировать" onclick="">
+					<input class="subCommentButton" type="submit" name="submit" value="РљРѕРјРјРµРЅС‚РёСЂРѕРІР°С‚СЊ" onclick="">
 				</form>
 				<?				
 				while($comments = mysqli_fetch_array($result)){
@@ -210,17 +213,18 @@ controlEnterAndExit();">
 			}
 			?>			
 		</div>
-		<div id="newCommentButton" class="bigButton"  onclick="newCommentForm.style.display = 'block';this.style.display = 'none';newCommentTxtArea.focus();"  style="margin-top: 10px;">Комментировать</div>
-		<div class="bigButton" onclick="location = 'index.php'" style="margin-top: 10px;display: inline-block;">Назад</div>
+
+		<div id="newCommentButton" class="bigButton"  onclick="newCommentForm.style.display = 'block';this.style.display = 'none';newCommentTxtArea.focus();"  style="margin-top: 10px;">РљРѕРјРјРµРЅС‚РёСЂРѕРІР°С‚СЊ</div>
+		<div class="bigButton" onclick="location = 'index.php'" style="margin-top: 10px;display: inline-block;">РќР°Р·Р°Рґ</div>
 	</div>
 		
 </div>
 
 <div id="regSuccess" onclick="showMainPage()" style="display:none;">
-	<h2>Регистрация прошла успешно!</h2>	
+	<h2>Р РµРіРёСЃС‚СЂР°С†РёСЏ РїСЂРѕС€Р»Р° СѓСЃРїРµС€РЅРѕ!</h2>	
 </div>
 <div id="cabinet" style="display:none;">
-	<h2>Тут будет кабинет</h2>	
+	<h2>РўСѓС‚ Р±СѓРґРµС‚ РєР°Р±РёРЅРµС‚</h2>	
 </div>
 </article>
 <footer>
@@ -229,7 +233,7 @@ controlEnterAndExit();">
 </div>
 </body>
 </html>
-<?php //ВХОД В СИСТЕМУ
+<?php //Р’РҐРћР” Р’ РЎРРЎРўР•РњРЈ
 if($_SESSION['endlessFarmLogin']){
 	$login = $_SESSION['endlessFarmLogin'];
 	echo "<script>sessionStorage['isLogin'] = 'nowLogged';sessionStorage['userLogin'] = '$login' ;</script>";
@@ -246,7 +250,7 @@ $login = $_POST['login'];
 		$_SESSION['sessionAccess'] = $info['user_access'];
 		echo "<script>sessionStorage['isLogin'] = 'nowLogged' ; sessionStorage['currentMenuButton'] = 'main' ; location = 'index.php';</script>";
 		} else {
-			echo "<script>sessionStorage['newWarningMessage'] = 'Неверное имя пользователя или пароль!';location = 'index.php';</script>";
+			echo "<script>sessionStorage['newWarningMessage'] = 'РќРµРІРµСЂРЅРѕРµ РёРјСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РёР»Рё РїР°СЂРѕР»СЊ!';location = 'index.php';</script>";
 			}
 	}
 $formType = $_POST['formType'];
@@ -257,7 +261,7 @@ $regTime = $_POST['regTime'];
 $patMail = '/^([a-z0-9_\.\-]+)@([a-z0-9]+)\.([a-z]{2,6})$/i';
 $patLogin = '/^[a-z0-9\-]{3,15}$/i';
 $patPass = '/^.{5,15}$/';
-$patTime = '/[^A-ZА-Я\-\s]/i';
+$patTime = '/[^A-ZРђ-РЇ\-\s]/i';
 
 if($formType == 'regForm') {
 	if((preg_match($patMail, $regEmail))&&(preg_match($patLogin, $regLogin))&&(preg_match($patPass, $regPass1))&&(preg_match($patTime, $regTime))){
@@ -275,15 +279,15 @@ if($formType == 'regForm') {
 		echo "<script>sessionStorage['currentMenuButton'] = 'regSuc' ; location = 'index.php';</script>";
 			} 
 	if($check == 'mail_overlap'){
-		echo "<script>sessionStorage['newWarningMessage'] = 'Эта почта уже используется!' ;location = 'index.php';</script>";
+		echo "<script>sessionStorage['newWarningMessage'] = 'Р­С‚Р° РїРѕС‡С‚Р° СѓР¶Рµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ!' ;location = 'index.php';</script>";
 			} 
 	if($check == 'login_overlap'){
-		echo "<script>sessionStorage['newWarningMessage'] = 'Пользователь с таким именем уже существует!' ;location = 'index.php';</script>";
+		echo "<script>sessionStorage['newWarningMessage'] = 'РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ СЃ С‚Р°РєРёРј РёРјРµРЅРµРј СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓРµС‚!' ;location = 'index.php';</script>";
 			}		
 	}
 	else {
 		//echo "<script>alert(sessionStorage['currentMenuButton'])</script>";
-		echo "<script>sessionStorage['newWarningMessage'] = 'Ошибка ввода данных.' ;location = 'index.php';</script>";
+		echo "<script>sessionStorage['newWarningMessage'] = 'РћС€РёР±РєР° РІРІРѕРґР° РґР°РЅРЅС‹С….' ;location = 'index.php';</script>";
 	}
 	}
 

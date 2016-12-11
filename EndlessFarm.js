@@ -2,29 +2,29 @@ function showFormTip(id) {
 	switch(id){
 
 	case "regLogin":
-		regDiscription.innerHTML = "<br>Логин может быть от 3 до 15 символов.Доступны латинские буквы в любом регистре, цифры и дефис.";
+		regDiscription.innerHTML = "<br>Р›РѕРіРёРЅ РјРѕР¶РµС‚ Р±С‹С‚СЊ РѕС‚ 3 РґРѕ 15 СЃРёРјРІРѕР»РѕРІ.Р”РѕСЃС‚СѓРїРЅС‹ Р»Р°С‚РёРЅСЃРєРёРµ Р±СѓРєРІС‹ РІ Р»СЋР±РѕРј СЂРµРіРёСЃС‚СЂРµ, С†РёС„СЂС‹ Рё РґРµС„РёСЃ.";
 		break;
 	case "regEmail":
-		regDiscription.innerHTML = "<br>Введите в это поле действующую электронную почту.";
+		regDiscription.innerHTML = "<br>Р’РІРµРґРёС‚Рµ РІ СЌС‚Рѕ РїРѕР»Рµ РґРµР№СЃС‚РІСѓСЋС‰СѓСЋ СЌР»РµРєС‚СЂРѕРЅРЅСѓСЋ РїРѕС‡С‚Сѓ.";
 		break;
 	case "regPass1":
-		regDiscription.innerHTML = "<br>Пароль должен быть от 5 до 15 символов.";
+		regDiscription.innerHTML = "<br>РџР°СЂРѕР»СЊ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РѕС‚ 5 РґРѕ 15 СЃРёРјРІРѕР»РѕРІ.";
 		break;
 	}
 }
 function controlEnterAndExit() {
 	if (sessionStorage['isLogin'] == 'nowLogged'){
-		enterButton.innerText = "Выход";
-		regButton.innerText = "Кабинет";
+		enterButton.innerText = "Р’С‹С…РѕРґ";
+		regButton.innerText = "РљР°Р±РёРЅРµС‚";
 		currentUser.style.display = "block";
-		currentUser.innerHTML = "Привет , " + sessionStorage['userLogin']+"!"+'<a href="game.php" target="_blank">[ИГРАТЬ]</a>';
+		currentUser.innerHTML = "РџСЂРёРІРµС‚ , " + sessionStorage['userLogin']+"!"+'<a href="game.php" target="_blank">[РР“Р РђРўР¬]</a>';
 		newMessageButton.style.display = "block";
 		newCommentButton.style.display = "inline-block";
 		return;
 	}
 	if ((sessionStorage['isLogin'] == 'nowUnlogged')||(!sessionStorage['isLogin'])){
-		enterButton.innerText = "Вход";
-		regButton.innerText = "Регистрация";
+		enterButton.innerText = "Р’С…РѕРґ";
+		regButton.innerText = "Р РµРіРёСЃС‚СЂР°С†РёСЏ";
 		currentUser.style.display = "none";
 		sessionStorage['userLogin'] = "";
 		newMessageButton.style.display = "none";
@@ -122,7 +122,7 @@ function pressRegCabBut(logStatus) {
 function validationEnter() {
 			
 			if ((!enterName.value)||(!enterPass.value)) {
-				setLoginWarningMessage("Заполните все поля!");
+				setLoginWarningMessage("Р—Р°РїРѕР»РЅРёС‚Рµ РІСЃРµ РїРѕР»СЏ!");
 				return false
 			}
 
@@ -134,23 +134,23 @@ function validationReg() {
 		var patternLogin = /^[a-z0-9\-]{3,15}$/i;
 		var patternPass = /^.{5,15}$/;
 		if ((!regLogin.value)||(!regEmail.value)||(!regPass1.value)||(!regPass2.value)) {
-			setRegWarningMessage("Заполните все поля!");
+			setRegWarningMessage("Р—Р°РїРѕР»РЅРёС‚Рµ РІСЃРµ РїРѕР»СЏ!");
 			return false;
 		}
 		if(!patternLogin.test(regLogin.value)) {
-			setRegWarningMessage('Недопустимые символы в логине!');	
+			setRegWarningMessage('РќРµРґРѕРїСѓСЃС‚РёРјС‹Рµ СЃРёРјРІРѕР»С‹ РІ Р»РѕРіРёРЅРµ!');	
 			return false;
 		}
 		if(!patternMail.test(regEmail.value)) {
-			setRegWarningMessage('Неверный формат e-mail!');	
+			setRegWarningMessage('РќРµРІРµСЂРЅС‹Р№ С„РѕСЂРјР°С‚ e-mail!');	
 			return false;
 		}
 		if(!patternPass.test(regPass1.value)) {
-			setRegWarningMessage('Пароль слишком короткий!');	
+			setRegWarningMessage('РџР°СЂРѕР»СЊ СЃР»РёС€РєРѕРј РєРѕСЂРѕС‚РєРёР№!');	
 			return false;
 		}
 		if ((regPass1.value)!=(regPass2.value)) {
-			setRegWarningMessage("Пароли не совпадают!");
+			setRegWarningMessage("РџР°СЂРѕР»Рё РЅРµ СЃРѕРІРїР°РґР°СЋС‚!");
 			return false;
 		}				
 		return true;	

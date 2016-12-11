@@ -20,45 +20,63 @@ if($login){
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="cp-1251">	
+	<meta charset="utf-8">	
 	<title>THE ENDLESS FARM</title>
 	<link rel="stylesheet" type="text/css" href="gamecss.css">
+	<script src = "gamejs.js" defer></script>
+	<script>
+		var cellArray = [];
+		class MapCell{
+			constructor(x,y,cellType,actions){
+			this.x = x;
+			this.y = y;
+			this.cellType = cellType;
+			this.actions = actions;
+		}
+		pr(){
+			var result = this.x+"<br>"+this.y+"<br>"+this.cellType+"<br>";
+			for (var i = 0; i < this.actions.length; i++) {
+				result += this.actions[i] + "<br>";
+			}
+		return result;	
+		}
+		}
+		<?
+		$query = "SELECT * FROM `game_map`";
+		$result = mysqli_query($link,$query);			
+		while ($map = mysqli_fetch_array($result)){
+			$cell = $map['cell_type_name'];
+			$query = "SELECT action_name FROM `actions_of_cells` WHERE cell_type_name = '$cell'";		
+			$result_j = mysqli_query($link,$query);
+			echo "var act=[];";
+			while ($actions = mysqli_fetch_array($result_j)) {
+				echo "act.push('".$actions['action_name']."');";
+			}
+		echo "cellArray.push(new MapCell('".$map['x']."','".$map['y']."','".$cell."',act));";	
+		}
+		?>
+	</script>
 </head>
-<body>
+<body onload="createMap();">
 <div id="contentbox">
 	<div id="mainBlock">
-		<table id="map">
-			<?
-			$query = "SELECT * FROM `game_map`";
-			$result = mysqli_query($link,$query);			
-			while ($map = mysqli_fetch_array($result)){
-				$r = $map['x'];
-				if($map['x']==1){
-					echo "<tr>";
-				}
-				echo "<td><img src='map/".$map['cell_type_name'].".svg' width='64' height='64'/></td>";
-				if($map['x']==5){
-					echo "</tr>";
-				}
-			}
-			?>	
-			
+		<table id="map">			
 		</table>			
 	</div>
 	<div id="resAndAction">
 		<p><? echo $login ?></p>
-		<p>Золото: <? echo $game_gold ?></p>
-		<p>Бревна: <? echo $game_drova ?></p>
-		<p>Руда: <? echo $game_ruda ?></p>
-		<p>Еда: <? echo $game_food ?></p>		
+		<p>Р—РѕР»РѕС‚Рѕ: <? echo $game_gold ?></p>
+		<p>Р‘СЂРµРІРЅР°: <? echo $game_drova ?></p>
+		<p>Р СѓРґР°: <? echo $game_ruda ?></p>
+		<p>Р•РґР°: <? echo $game_food ?></p>		
 	</div><br>
 	<div id="activeForms">
-		Активные формы
+		РђРєС‚РёРІРЅС‹Рµ С„РѕСЂРјС‹<br>
 	</div>
 	<div id="actionLog">
-		Лог действий
+		Р›РѕРі РґРµР№СЃС‚РІРёР№<br>
+				
 	</div>
-
 </div>
 </body>
 </html>

@@ -36,6 +36,7 @@
 	width: 324px;
 	height: 150px;
 	text-align: center;
+	float: left;
 }
 #actionLog{
 	display: inline-block;
@@ -44,10 +45,19 @@
 	width: 200px;
 	height: 150px;
 	text-align: center;
+	
 }
 p{
 	margin-left: 10px;
 }
 img{
-		 vertical-align: middle;
+	 vertical-align: middle;
+	 z-index: 0;
+
+}
+
+.mapCellImg:hover{
+	cursor: pointer;
+	z-index: 10;
+	box-shadow:0 0 10px black;
 }
