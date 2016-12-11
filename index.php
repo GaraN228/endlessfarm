@@ -20,7 +20,6 @@ function lookForOverlap($mail,$login,$link)
 	}
 	return 'no_overlap';
 }
-
  ?>
 <!DOCTYPE html>
 <html>
@@ -140,8 +139,6 @@ controlEnterAndExit();">
 		 	<div id="forumList" style="height: 350px;position: relative;text-align: center;">Нет записей
 		 	<?
 		 }
-
-
 	?>
 	<br>
 	<div id="newMessageButton" class="bigButton" onclick="forumList.style.display = 'none';newMesForm.style.display = 'block';width='250px;'">Добавить новую запись</div>
@@ -213,7 +210,6 @@ controlEnterAndExit();">
 			}
 			?>			
 		</div>
-
 		<div id="newCommentButton" class="bigButton"  onclick="newCommentForm.style.display = 'block';this.style.display = 'none';newCommentTxtArea.focus();"  style="margin-top: 10px;">Комментировать</div>
 		<div class="bigButton" onclick="location = 'index.php'" style="margin-top: 10px;display: inline-block;">Назад</div>
 	</div>
