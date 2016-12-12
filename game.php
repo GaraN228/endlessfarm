@@ -25,6 +25,10 @@ if($login){
 	<link rel="stylesheet" type="text/css" href="gamecss.css">
 	<script src = "gamejs.js" defer></script>
 	<script>
+		//GLOBALS
+		var lastMapCell = new Object;
+		var currentWorkTime = 1;
+		var currenCellNumber = 0;
 		var cellArray = [];
 		class MapCell{
 			constructor(x,y,cellType,actions){
@@ -72,6 +76,9 @@ if($login){
 	</div><br>
 	<div id="activeForms">
 		Активные формы<br>
+	</div>
+	<div id="activeFormsInfo">
+		Информация<br>
 	</div>
 	<div id="actionLog">
 		Лог действий<br>

@@ -33,31 +33,60 @@
 	display: inline-block;
 	border:1px solid #4169E1;
 	background-color:#ADD8E6;
-	width: 324px;
+	width: 139px;
 	height: 150px;
-	text-align: center;
+	border-right: none;
+	text-align: left;
+	float: left;
+}
+#activeFormsInfo{
+	display: inline-block;
+	border:1px solid #4169E1;
+	background-color:#E0FFFF;
+	width: 184px;
+	height: 150px;
+	text-align: left;
 	float: left;
 }
 #actionLog{
 	display: inline-block;
 	border:1px solid #9ACD32;
 	background-color:#98FB98;
-	width: 200px;
+	width: 198px;
 	height: 150px;
 	text-align: center;
-	
+
 }
 p{
 	margin-left: 10px;
 }
 img{
 	 vertical-align: middle;
-	 z-index: 0;
 
 }
 
 .mapCellImg:hover{
 	cursor: pointer;
-	z-index: 10;
-	box-shadow:0 0 10px black;
+	width: 62px;
+	height: 62px;
+	border: 1px solid #FF4500;
+}
+#workForm{
+	padding: 5px;
+}
+
+#workForm input{
+	width: 122px;
+
+}
+#workForm select{
+	width: 126px;
+}
+#workForm input[type="submit"]{
+	width: 126px;
+	margin-top: 5px; 
+}
+#workFormInfo{
+	display: block;
+	padding: 5px;
 }
