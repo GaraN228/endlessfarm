@@ -35,7 +35,14 @@ function lookForOverlap($mail,$login,$link)
 startSessionStorage();
 setLoginWarningMessage(sessionStorage['newWarningMessage']);
 setRegWarningMessage(sessionStorage['newWarningMessage']);
-controlEnterAndExit();">
+controlEnterAndExit();
+<?
+	if($_GET['status']=='unlog'){
+			echo "pressEnterExitBut(sessionStorage['isLogin']);";
+		}
+?>
+"
+>
 
 <div id="content">
 <header>
@@ -78,7 +85,7 @@ controlEnterAndExit();">
 	<h2>Авторизация</h2>
 	<form id="log" method="POST" action="index.php" name="enter">
 		<p>Введите логин:<br>
-		<input id="enterName" type="text" name="login" onfocus="hideLoginWarningMessage();" value="GaraN" maxlength="15"></p>
+		<input id="enterName" type="text" name="login" onfocus="hideLoginWarningMessage();" value="" maxlength="15"></p>
 		<p>Введите пароль:<br>
 		<input id="enterPass" type="password" name="pass" onfocus="hideLoginWarningMessage();"></p>
 		<input type="hidden" name="formType" value="loginForm">
@@ -273,7 +280,7 @@ if($formType == 'regForm') {
 		$result = mysqli_query($link,$query);
 		//CREATE ACC
 		$query = "INSERT INTO game_account (account_id,user_name,res_gold,res_drova,res_ruda,res_food,income)
-				VALUES (NULL,'$regLogin','1000','0','0','0','0')";
+				VALUES (NULL,'$regLogin',1000,0,0,0,0)";
 		$result = mysqli_query($link,$query);
 
 		echo "<script>sessionStorage['currentMenuButton'] = 'regSuc' ; location = 'index.php';</script>";

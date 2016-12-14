@@ -28,6 +28,18 @@
 	background-color: #D8BFD8;
 	width: 200px;
 	height: 324px;
+	position: relative;
+}
+#activityList{
+	width: 178px;
+	height: 186px;
+	position: fixed;
+	margin-left:5px;
+	background-color: #E6E6FA;
+	border:1px solid #9370DB;
+	overflow: auto;
+	padding: 5px;
+	
 }
 #activeForms{
 	display: inline-block;
@@ -52,7 +64,7 @@
 	display: inline-block;
 	border:1px solid #9ACD32;
 	background-color:#98FB98;
-	width: 198px;
+	width: 200px;
 	height: 150px;
 	text-align: center;
 
