@@ -19,9 +19,9 @@ if($login){
 	$accInfo = mysqli_fetch_array($result);
 	$game_id = $accInfo['account_id'];
 	$game_gold = $accInfo['res_gold'];
-	$game_drova = $accInfo['res_drova'];
-	$game_ruda = $accInfo['res_ruda'];
-	$game_food = $accInfo['res_food'];
+	$game_drova = $accInfo['res_Lumber'];
+	$game_ruda = $accInfo['res_Ore'];
+	$game_food = $accInfo['res_Food'];
 	$game_income = $accInfo['res_income'];
 	
 
@@ -32,15 +32,17 @@ if($login){
 		$workTime = $_POST["workTime"];	
 		$cellX = $_POST["cellX"];
 		$cellY = $_POST["cellY"];
-		//---Координаты города, из которого отдаются задания. надо потом добавить в базу-----------	
+		//---РљРѕРѕСЂРґРёРЅР°С‚С‹ РіРѕСЂРѕРґР°, РёР· РєРѕС‚РѕСЂРѕРіРѕ РѕС‚РґР°СЋС‚СЃСЏ Р·Р°РґР°РЅРёСЏ. РЅР°РґРѕ РїРѕС‚РѕРј РґРѕР±Р°РІРёС‚СЊ РІ Р±Р°Р·Сѓ-----------	
 		$officeX = 2;
 		$officeY = 4;
-		$query = "SELECT cell_type_name FROM `game_map` WHERE x = '$cellX' AND y = '$cellY'"; //Проверка соответствия квадрата заданию
+		$query = "SELECT cell_type_name FROM `game_map` WHERE x = '$cellX' AND y = '$cellY'"; //РџСЂРѕРІРµСЂРєР° СЃРѕРѕС‚РІРµС‚СЃС‚РІРёСЏ РєРІР°РґСЂР°С‚Р° Р·Р°РґР°РЅРёСЋ
 		$result = mysqli_query($link,$query);
 		$cells = mysqli_fetch_array($result);
 		$cell = $cells['cell_type_name'];		
 		$query = "SELECT * FROM `actions_of_cells` WHERE action_type_name = '$workType' AND cell_type_name = '$cell'";
-		$result = mysqli_query($link,$query);		
+		$result = mysqli_query($link,$query);
+		$actArr = mysqli_fetch_array($result);
+		$actCost = $actArr['cost_per_act'];		
 		$valid = mysqli_num_rows($result);
 		if($valid){
 			$query = "SELECT * FROM `types_of_actions` WHERE action_type_name = '$workType'";
@@ -49,15 +51,39 @@ if($login){
 			$action_output = $farm_vars['output_per_act'];
 			$chance = $farm_vars['base_chance'];
 			$startTime = time();
-			$moveTime = (abs($cellX - $officeX) + abs($cellX - $officeY))*2;
-			$finishTime = $startTime + $workTime*60 + $moveTime*60;
-			//echo "TM:$workTime,GPA:$action_output,CHN:$chance";			
-			$workResult = countResult( $workTime,$action_output,$chance); // Результат фарма					
+			$moveTime = (abs($cellX - $officeX) + abs($cellY - $officeY))*2 - 1;
+			$finishTime = $startTime + $workTime*60 + $moveTime*60;//РІСЂРµРјСЏ СЂР°Р±РѕС‚С‹
+			$finalWorkCost =  $workTime * $actCost + $moveTime; //СЃС‚РѕРёРјРѕСЃС‚СЊ СЂР°Р±РѕС‚С‹
+			$game_gold -= $finalWorkCost;
+			$workResult = countResult( $workTime,$action_output,$chance); // Р РµР·СѓР»СЊС‚Р°С‚ С„Р°СЂРјР°					
 			$query = "INSERT INTO current_activity (activity_id,account_id,action_type_name,activity_start,activity_finish,activity_result)
 				VALUES (NULL,'$game_id','$workType','$startTime','$finishTime','$workResult')";
 			$result	= mysqli_query($link,$query);
+			$query = "UPDATE game_account SET res_gold = '$game_gold' WHERE account_id = '$game_id'";
+			$result	= mysqli_query($link,$query);
 			echo "<script>location='game.php';</script>";
 		}
+	}	
+	$closeActId = $_GET['harv'];
+	//-------Р—РђР’Р•Р РЁР•РќРР• Р”Р•Р™РЎРўР’РРЇ---------------------------
+	if($closeActId){
+		$query = "SELECT * FROM current_activity WHERE activity_id = '$closeActId'";
+		$result = mysqli_query($link,$query);
+		$techArray = mysqli_fetch_array($result);
+		if($techArray['activity_finish']>time()) echo "<script>location='game.php';</script>"; 
+		$workType = $techArray['action_type_name'];
+		//echo "workType:".$workType."<br>";
+		$workResult = $techArray['activity_result'];
+		$sendRes = "res_".substr($workType, 5);
+		$query = "SELECT ".$sendRes." FROM game_account WHERE account_id = '$game_id'";
+		$result = mysqli_query($link,$query);
+		$techArray = mysqli_fetch_array($result);
+		$sendValue = $techArray[$sendRes] + $workResult; 
+		$query = "UPDATE game_account SET ".$sendRes." = '$sendValue' WHERE account_id = '$game_id'";
+		$result = mysqli_query($link,$query);
+		$query = "DELETE FROM current_activity WHERE activity_id = '$closeActId'";
+		$result = mysqli_query($link,$query);
+		echo "<script>location='game.php';</script>";
 	}	
 } else {
 	echo "<script>location = 'index.php?status=unlog';</script>";
@@ -111,9 +137,10 @@ if($login){
 		}
 		?>
 		class ActivityTimer{
-			constructor(finish,resType){
+			constructor(finish,resType,id){
 				this.finish = finish;
 				this.resType = resType;
+				this.id = id;
 			}
 
 		}
@@ -123,7 +150,7 @@ if($login){
 		$result = mysqli_query($link,$query);
 		while ($active = mysqli_fetch_array($result)){
 			$interval =  $active['activity_finish'] - time();
-			echo "activityArray.push(new ActivityTimer(".$interval.",'".$active['action_type_name']."'));";
+			echo "activityArray.push(new ActivityTimer(".$interval.",'".$active['action_type_name']."','".$active['activity_id']."'));";
 		}
 		?>
 	</script>
@@ -135,22 +162,24 @@ if($login){
 		</table>			
 	</div>
 	<div id="resAndAction">
-		<p><? echo $login ?><br>
-		Золото: <? echo $game_gold ?><br>
-		Бревна: <? echo $game_drova ?><br>
-		Руда: <? echo $game_ruda ?><br>
-		Еда: <? echo $game_food ?></p>
-		<div id="activityList">				
+		<p><b><? echo $login ?></b><br>
+		<img src="respng/coin.png" width="18" height="18"> Р—РѕР»РѕС‚Рѕ: <? echo $game_gold ?><br>
+		<img src="respng/Lumber.png"  width="18" height="18"> Р‘СЂРµРІРЅР°: <? echo $game_drova ?><br>
+		<img src="respng/Ore.png"  width="18" height="18"> Р СѓРґР°: <? echo $game_ruda ?><br>
+		<img src="respng/Food.png"  width="18" height="18"> Р•РґР°: <? echo $game_food ?></p>
+		<div id="activityList">
+			<table id = 'timerTable'>
+			</table>				
 		</div>	
 	</div><br>
 	<div id="activeForms">
-		Активные формы<br>
+		РђРєС‚РёРІРЅС‹Рµ С„РѕСЂРјС‹<br>
 	</div>
 	<div id="activeFormsInfo">
-		Информация<br>
+		РРЅС„РѕСЂРјР°С†РёСЏ<br>
 	</div>
 	<div id="actionLog">
-		Лог действий<br>
+		Р›РѕРі РґРµР№СЃС‚РІРёР№<br>
 				
 	</div>
 </div>
