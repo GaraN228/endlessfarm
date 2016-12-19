@@ -1,20 +1,18 @@
-#contentbox{
-	width: 530px; 
-	margin-left: auto;
-	margin-right: auto;
-	display: table;
-}
-#mainBlock{
-	display: inline-block;
-	float: left;
 
+.tableHead{
+	text-align: center;
+	font-weight: bold;
+	background-color: #D3D3D3;
+}
+#user{
+	background-color: black;
+	color: white; 
 }
 #map{
 	border-collapse: collapse;
 
 }
 #map td{
-	border:1px solid #FF4500;
 	width: 64px;
 	height: 64px;
 	text-align: center;
@@ -23,25 +21,48 @@
 	background-color: #FFE4E1;
 
 }
-#resAndAction{
-	display: inline-block;
-	border:1px solid #9370DB;
-	background-color: #D8BFD8;
-	width: 200px;
-	height: 324px;
-	position: relative;
+#new td{	
+	border:1px solid black;
+	padding:0;	
+}
+
+#new table{
+	border-collapse: collapse;
+	margin-left: auto;
+    margin-right: auto;
+}
+#mapPlace td{
+	border:none;
+	width: 64px;
+	height: 64px;
+	text-align: center;
+	border-collapse: collapse;
+	padding: 0;
+	background-color: #FFE4E1;
+}
+#resAndAction{	
+	height: 91px;
+	width: 160px;
+	padding:5px;
+	background-color: #F5F5F5;
+}
+#showRestable td{
+	border: none;
+	text-align: left;
+	padding: 0 5px ;
 }
 #activityList{
-	width: 178px;
-	height: 178px;
-	margin-left:5px;
-	background-color: #E6E6FA;
-	border:1px solid #9370DB;
+	width: 160px;
+	height: 170px;
+	background-color: #F5F5F5;	
 	overflow: auto;
-	padding: 5px;	
+	padding: 5px;
 }
+
 #timerTable{	
 	border-collapse: collapse; 
+	
+
 }
 .timer{
 	width: 150px;
@@ -51,38 +72,56 @@
 }
 #timerTable tr:hover{
 	cursor: pointer;
-	background-color: #D5D5EB;
+	background-color: #F0E68C;
+}
+#timerTable td{
+	border: none;
+	cursor: pointer;
+	padding: 3px;
 
 }
 .resImg{	
 	padding: 3px;
 }
-#activeForms{
-	display: inline-block;
-	border:1px solid #4169E1;
-	background-color:#ADD8E6;
-	width: 139px;
-	height: 150px;
-	border-right: none;
+#activeForms{		
+	background-color:#F5F5F5;
+	width: 160px;
+	height: 120px;	
 	text-align: left;
-	float: left;
 }
-#activeFormsInfo{
-	display: inline-block;
-	border:1px solid #4169E1;
-	background-color:#E0FFFF;
-	width: 184px;
-	height: 150px;
+#activeFormsInfo{	
+	background-color:#F5F5F5;
+	width: 159px;
+	height: 120px;
 	text-align: left;
-	float: left;
+}
+#workForm{
+	padding: 5px;
+	margin-left: auto;
+	margin-right: auto;
+}
+#workForm input{
+	width: 145px;
+}
+#workForm select{
+	width: 149px;
+}
+#workForm input[type="submit"]{
+	width: 149px;
+	margin-top: 5px; 
+}
+#workFormInfo{
+	display: block;
+	padding: 5px;
 }
 #actionLog{
-	display: inline-block;
-	border:1px solid #9ACD32;
-	background-color:#98FB98;
-	width: 200px;
-	height: 150px;
-	text-align: center;
+	background-color:#F5F5F5;
+	width: 160px;
+	height: 110px;
+	text-align:left;
+	padding: 5px;
+	overflow: auto;
+
 
 }
 p{
@@ -99,22 +138,19 @@ img{
 	height: 62px;
 	border: 1px solid #FF4500;
 }
-#workForm{
-	padding: 5px;
+
+#new{
+	border: 1px solid black;
+	border-collapse: collapse;
+	margin-left: auto;
+	margin-right: auto;	
 }
 
-#workForm input{
-	width: 122px;
 
+#gameRes{
+	height: 120px;
+	padding:5px;
+	background-color: #F5F5F5;
 }
-#workForm select{
-	width: 126px;
-}
-#workForm input[type="submit"]{
-	width: 126px;
-	margin-top: 5px; 
-}
-#workFormInfo{
-	display: block;
-	padding: 5px;
-}
+
+

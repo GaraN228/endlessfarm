@@ -18,73 +18,12 @@ if($login){
 	$result = mysqli_query($link,$query);
 	$accInfo = mysqli_fetch_array($result);
 	$game_id = $accInfo['account_id'];
-	$game_gold = $accInfo['res_gold'];
+	$_SESSION['endlessFarmGameId'] = $game_id;
+	$game_gold = $accInfo['res_gold'];;
 	$game_drova = $accInfo['res_Lumber'];
 	$game_ruda = $accInfo['res_Ore'];
 	$game_food = $accInfo['res_Food'];
 	$game_income = $accInfo['res_income'];
-	
-
-	$subType = $_POST["subType"];	
-	//-----------SEND ACTION TO DB----------
-	if($subType == "newActivity"){ 
-		$workType = $_POST["workType"];		
-		$workTime = $_POST["workTime"];	
-		$cellX = $_POST["cellX"];
-		$cellY = $_POST["cellY"];
-		//---Координаты города, из которого отдаются задания. надо потом добавить в базу-----------	
-		$officeX = 2;
-		$officeY = 4;
-		$query = "SELECT cell_type_name FROM `game_map` WHERE x = '$cellX' AND y = '$cellY'"; //Проверка соответствия квадрата заданию
-		$result = mysqli_query($link,$query);
-		$cells = mysqli_fetch_array($result);
-		$cell = $cells['cell_type_name'];		
-		$query = "SELECT * FROM `actions_of_cells` WHERE action_type_name = '$workType' AND cell_type_name = '$cell'";
-		$result = mysqli_query($link,$query);
-		$actArr = mysqli_fetch_array($result);
-		$actCost = $actArr['cost_per_act'];		
-		$valid = mysqli_num_rows($result);
-		if($valid){
-			$query = "SELECT * FROM `types_of_actions` WHERE action_type_name = '$workType'";
-			$result = mysqli_query($link,$query);
-			$farm_vars = mysqli_fetch_array($result);
-			$action_output = $farm_vars['output_per_act'];
-			$chance = $farm_vars['base_chance'];
-			$startTime = time();
-			$moveTime = (abs($cellX - $officeX) + abs($cellY - $officeY))*2 - 1;
-			$finishTime = $startTime + $workTime*60 + $moveTime*60;//время работы
-			$finalWorkCost =  $workTime * $actCost + $moveTime; //стоимость работы
-			$game_gold -= $finalWorkCost;
-			$workResult = countResult( $workTime,$action_output,$chance); // Результат фарма					
-			$query = "INSERT INTO current_activity (activity_id,account_id,action_type_name,activity_start,activity_finish,activity_result)
-				VALUES (NULL,'$game_id','$workType','$startTime','$finishTime','$workResult')";
-			$result	= mysqli_query($link,$query);
-			$query = "UPDATE game_account SET res_gold = '$game_gold' WHERE account_id = '$game_id'";
-			$result	= mysqli_query($link,$query);
-			echo "<script>location='game.php';</script>";
-		}
-	}	
-	$closeActId = $_GET['harv'];
-	//-------ЗАВЕРШЕНИЕ ДЕЙСТВИЯ---------------------------
-	if($closeActId){
-		$query = "SELECT * FROM current_activity WHERE activity_id = '$closeActId'";
-		$result = mysqli_query($link,$query);
-		$techArray = mysqli_fetch_array($result);
-		if($techArray['activity_finish']>time()) echo "<script>location='game.php';</script>"; 
-		$workType = $techArray['action_type_name'];
-		//echo "workType:".$workType."<br>";
-		$workResult = $techArray['activity_result'];
-		$sendRes = "res_".substr($workType, 5);
-		$query = "SELECT ".$sendRes." FROM game_account WHERE account_id = '$game_id'";
-		$result = mysqli_query($link,$query);
-		$techArray = mysqli_fetch_array($result);
-		$sendValue = $techArray[$sendRes] + $workResult; 
-		$query = "UPDATE game_account SET ".$sendRes." = '$sendValue' WHERE account_id = '$game_id'";
-		$result = mysqli_query($link,$query);
-		$query = "DELETE FROM current_activity WHERE activity_id = '$closeActId'";
-		$result = mysqli_query($link,$query);
-		echo "<script>location='game.php';</script>";
-	}	
 } else {
 	echo "<script>location = 'index.php?status=unlog';</script>";
 }
@@ -99,6 +38,7 @@ if($login){
 	<title>THE ENDLESS FARM</title>
 	<link rel="stylesheet" type="text/css" href="gamecss.css">
 	<script src = "gamejs.js" defer></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 	<script>
 		//GLOBALS
 		var lastMapCell = new Object;
@@ -152,36 +92,103 @@ if($login){
 			$interval =  $active['activity_finish'] - time();
 			echo "activityArray.push(new ActivityTimer(".$interval.",'".$active['action_type_name']."','".$active['activity_id']."'));";
 		}
+		//--------------------CREATE LOGS-----------------
+			
+		$query = "SELECT * FROM game_logs WHERE account_id = '$game_id' ORDER BY log_created DESC LIMIT 0,30";
+		$result = mysqli_query($link,$query);
+		$outputJS.="$(document).ready(function(){";
+		$outputJS.="$('#actionLog').html('";
+		while ($techArray = mysqli_fetch_array($result)){
+			$outputJS.=$techArray['log_created']."<br>";
+			$outputJS.=$techArray['log_text']."<hr>";
+		}
+		$outputJS.="');";
+		$outputJS.="});";
+		echo $outputJS;
 		?>
 	</script>
 </head>
-<body onload="createMap();createTimers();">
-<div id="contentbox">
-	<div id="mainBlock">
-		<table id="map">			
-		</table>			
-	</div>
-	<div id="resAndAction">
-		<p><b><? echo $login ?></b><br>
-		<img src="respng/coin.png" width="18" height="18"> Золото: <? echo $game_gold ?><br>
-		<img src="respng/Lumber.png"  width="18" height="18"> Бревна: <? echo $game_drova ?><br>
-		<img src="respng/Ore.png"  width="18" height="18"> Руда: <? echo $game_ruda ?><br>
-		<img src="respng/Food.png"  width="18" height="18"> Еда: <? echo $game_food ?></p>
-		<div id="activityList">
-			<table id = 'timerTable'>
-			</table>				
-		</div>	
-	</div><br>
-	<div id="activeForms">
-		Активные формы<br>
-	</div>
-	<div id="activeFormsInfo">
-		Информация<br>
-	</div>
-	<div id="actionLog">
-		Лог действий<br>
-				
-	</div>
-</div>
+<body onload="createMap();createTimers();">	
+<table id='new'>
+	<tbody>
+		<tr>
+		<td class="tableHead" id="user" colspan="3"><? echo $login ?></td>
+		<tr>
+		<tr>
+			<td id='mapPlace' colspan="2" rowspan="4">
+				<table id="map">
+				</table>
+			</td>
+			<td class="tableHead">
+				Ресурсы
+			</td>			
+		</tr>
+		<tr>
+			<td>
+				<div id="resAndAction">
+				<table id="showRestable">					
+					<tr>
+						<td><img src="respng/coin.png" width="18" height="18"> Золото:</td>
+						<td><span id="gold"><? echo $game_gold ?></span></td>
+					</tr>
+					<tr>
+						<td><img src="respng/Lumber.png"  width="18" height="18"> Бревна:</td>
+						<td><span id="lumber"><? echo $game_drova ?></span></td>
+					</tr>
+					<tr>
+						<td><img src="respng/Ore.png"  width="18" height="18"> Руда:</td>
+						<td><span id="ore"><? echo $game_ruda ?></span></td>
+					</tr>
+					<tr>
+						<td><img src="respng/Food.png"  width="18" height="18"> Еда:</td>
+						<td><span id="food"><? echo $game_food ?></span></td>
+					</tr>
+				</table>				
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="tableHead">
+				События
+			</td>
+		</tr>		
+		<tr>
+			<td>
+			<div id="activityList">
+				<table id = 'timerTable'>
+				</table>
+			</div>	
+			</td>		
+		</tr>
+		<tr>
+			<td class="tableHead">
+				Действие 
+			</td>
+			<td class="tableHead">
+				Информация
+			</td>
+			<td class="tableHead">
+				Отчеты
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div id="activeForms">
+				</div>	
+			</td>
+			<td>
+				<div id="activeFormsInfo">
+					
+				</div>
+			</td>
+			<td>
+				<div id="actionLog">
+				</div>
+			</td>
+		</tr>
+	</tbody>		
+</table>
+<div id="JS"></div>
+<div id="TIMERJS"></div><br>
 </body>
 </html>
